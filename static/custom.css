@@ -1,0 +1,21 @@
+@import url('https://cdn.jsdelivr.net/npm/swagger-ui-dist@5/swagger-ui.css');
+
+/* POST bar (Soft Pink) */
+.swagger-ui .opblock-post {
+    background: rgba(255, 183, 197, 0.1) !important;
+    border-color: #ffb7c5 !important;
+}
+
+.swagger-ui .opblock-post .opblock-summary-method {
+    background-color: #ffb7c5 !important;
+}
+
+/* GET bars (Lavender) */
+.swagger-ui .opblock-get {
+    background: rgba(230, 230, 250, 0.1) !important;
+    border-color: #e6e6fa !important;
+}
+
+.swagger-ui .opblock-get .opblock-summary-method {
+    background-color: #e6e6fa !important;
+}
