@@ -2,32 +2,24 @@ from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 from database import Base
 
-
-# -------------------------
-# User Model
-# -------------------------
 class User(Base):
     __tablename__ = "users"
 
     id = Column(Integer, primary_key=True, index=True)
-    username = Column(String, unique=True, index=True, nullable=False)
-    hashed_password = Column(String, nullable=False)
+    username = Column(String, unique=True, index=True)
+    hashed_password = Column(String)
 
-    # Relationship: One user -> Many notes
-    notes = relationship("Note", back_populates="owner", cascade="all, delete")
+    # Relationship to notes
+    notes = relationship("Note", back_populates="owner")
 
-
-# -------------------------
-# Note Model
-# -------------------------
 class Note(Base):
     __tablename__ = "notes"
 
     id = Column(Integer, primary_key=True, index=True)
-    title = Column(String, nullable=False)
-    content = Column(String, nullable=False)
-
+    title = Column(String)
+    content = Column(String)
+    category = Column(String, index=True, default="General")
     owner_id = Column(Integer, ForeignKey("users.id"))
 
-    # Relationship back to User
+    # Relationship back to user
     owner = relationship("User", back_populates="notes")
